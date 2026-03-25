@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>تواصل معنا | اوتو لاين</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mobile_app.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a96e",
+                        "background-dark": "#12110f",
+                        "surface": "#1c1c1c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Cairo", "sans-serif"],
+                        "serif": ["Cormorant Garamond", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display text-right">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2">
+            <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain"/>
+        </a>
+        <nav class="hidden md:flex items-center gap-10">
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="index.html">الرئيسية</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="about.html">من نحن</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="fleet.html">سيارات للايجار</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="blog.html">المدونة</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest text-primary" href="contact.html">تواصل معنا</a>
+        </nav>
+        <button onclick="window.location.href='fleet.html'" class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">أجر سيارتك</button>
+    </header>
+
+    <main class="pt-40 pb-24 px-6 lg:px-20 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h1 class="font-serif text-6xl text-white mb-6 italic">اتصل بنا</h1>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+            <!-- Form Side -->
+            <div class="bg-surface p-10 rounded-3xl border border-white/5 shadow-2xl">
+                <h2 class="font-serif text-3xl text-white mb-8 italic">اترك لنا رساله</h2>
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-primary tracking-widest mb-3">الاسم بالكامل</label>
+                            <input type="text" id="contact-name" class="w-full bg-background-dark border-white/5 rounded-xl p-4 text-sm focus:border-primary transition-colors text-right" placeholder="أدخل اسمك بالكامل"/>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-primary tracking-widest mb-3">البريد الإلكتروني</label>
+                            <input type="email" id="contact-email" class="w-full bg-background-dark border-white/5 rounded-xl p-4 text-sm focus:border-primary transition-colors text-right" placeholder="example@mail.com"/>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-primary tracking-widest mb-3">الموضوع</label>
+                        <input type="text" id="contact-subject" class="w-full bg-background-dark border-white/5 rounded-xl p-4 text-sm focus:border-primary transition-colors text-right" placeholder="ما هو موضوع استفسارك؟"/>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-bold text-primary tracking-widest mb-3">الرساله</label>
+                        <textarea id="contact-message" rows="5" class="w-full bg-background-dark border-white/5 rounded-xl p-4 text-sm focus:border-primary transition-colors text-right" placeholder="اكتب رسالتك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-background-dark font-black py-4 rounded-xl uppercase tracking-widest hover:bg-white transition-all shadow-xl flex items-center justify-center gap-3">
+                        <span class="material-symbols-outlined">send</span>
+                        إرسال الرسالة
+                    </button>
+                </form>
+            </div>
+
+            <!-- Info Side -->
+            <div class="space-y-12">
+                <div class="space-y-8">
+                    <div class="flex items-start gap-6 justify-end">
+                        <div class="text-right">
+                            <h4 class="text-white font-serif text-xl italic mb-2">العنوان</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">أوتو لاين، 2 مسجد الرحمن الرحيم</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">هاكستيب، النزهة، محافظة القاهرة 4473212</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">location_on</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-6 justify-end">
+                        <div class="text-right">
+                            <h4 class="text-white font-serif text-xl italic mb-2">رقم الهاتف</h4>
+                            <p class="text-slate-400 text-sm dir-ltr">+201003412321</p>
+                            <p class="text-slate-400 text-sm dir-ltr">+201154144465</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">call</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-6 justify-end">
+                        <div class="text-right">
+                            <h4 class="text-white font-serif text-xl italic mb-2">البريد الإلكتروني</h4>
+                            <p class="text-slate-400 text-sm">info@autoline-car-rent.com</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-primary">mail</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl overflow-hidden border border-white/5 h-[300px] grayscale opacity-60 hover:grayscale-0 transition-all duration-700 shadow-2xl">
+                                        <iframe 
+                        src="https://maps.google.com/maps?q=2%20مسجد%20الرحمن%20الرحيم،%20هاكستيب،%20النزهة،%20محافظة%20القاهرة%204473212&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-20 text-right">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 text-right">
+            <div>
+                <a href="index.html" class="flex items-center gap-2 mb-8 justify-end">
+                    <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
+                </a>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
+                    اوتو لاين، 2 مسجد الرحمن الرحيم، هاكستيب، النزهة، محافظة القاهرة 4473212
+                </p>
+                <div class="flex gap-4 mt-8 justify-end">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">facebook</i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">share</i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">استكشف</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">الدعم</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">اتصل بنا</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201003412321</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201154144465</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300">info@autoline-car-rent.com</span>
+                        <span class="material-symbols-outlined text-primary text-lg">mail</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-white/5 pt-10 text-center space-y-4">
+            <p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
+            <a href="https://yaaalla.com/" target="_blank" class="text-slate-500 text-[10px] uppercase tracking-[0.2em] hover:text-primary transition-colors block">
+                Designed by <span class="text-primary font-black">Yaaalla</span>
+            </a>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { supabase } from './supabase.js';
+
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+
+            if(!name || !email || !message) {
+                alert('يرجى تعبئة كافة الحقول المتاحة للمتابعة');
+                return;
+            }
+
+            const { error } = await supabase.from('contacts').insert({ name, email, subject, message });
+
+            if (error) {
+                alert('عذراً، حدث خطأ أثناء الإرسال. يرجى المحاولة لاحقاً.');
+            } else {
+                alert('تم إرسال رسالتك بنجاح. سيتواصل معك فريقنا قريباً.');
+                e.target.reset();
+            }
+        });
+    </script>
+    <style>
+        .dir-ltr { direction: ltr; }
+    </style>
+    <script src="mobile_app.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>أسطولنا | أوتو لاين</title>
+    <meta name="description"
+        content="تصفح مجموعتنا الحصرية من السيارات الرياضية الفاخرة وسيارات الدفع الرباعي. احجز سيارتك المفضلة اليوم بسهولة تامة." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mobile_app.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a96e",
+                        "background-dark": "#12110f",
+                        "surface": "#1c1c1c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Cairo", "sans-serif"],
+                        "serif": ["Cormorant Garamond", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display">
+    <header
+        class="fixed top-0 w-full z-50 border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2">
+            <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
+        </a>
+        <nav class="hidden md:flex items-center gap-10">
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+                href="index.html">الرئيسية</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+                href="about.html">من نحن</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest text-primary"
+                href="fleet.html">سيارات للايجار</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+                href="blog.html">المدونة</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+                href="contact.html">تواصل معنا</a>
+        </nav>
+        <button onclick="window.location.href='fleet.html'"
+            class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">
+            أجر سيارتك
+        </button>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 lg:px-20 max-w-7xl mx-auto flex flex-col md:flex-row gap-10">
+        <!-- Filters Sidebar -->
+        <aside class="w-full md:w-64 space-y-8 text-right">
+            <div>
+                <h3 class="font-serif text-2xl text-white mb-6 border-r-4 border-primary pr-3 italic">الفلاتر</h3>
+
+                <div class="space-y-6">
+                    <div>
+                        <label
+                            class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">الماركة</label>
+                        <select id="filter-brand"
+                            class="w-full bg-surface border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right">
+                            <option value="">الكل</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">الفئة</label>
+                        <select id="filter-category"
+                            class="w-full bg-surface border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right">
+                            <option value="">الكل</option>
+                            <option value="Luxury Sedan">سيدان فاخرة</option>
+                            <option value="Supercar">رياضية خارقة</option>
+                            <option value="SUV">دفع رباعي</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">ناقل
+                            الحركة</label>
+                        <select id="filter-transmission"
+                            class="w-full bg-surface border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right">
+                            <option value="">الكل</option>
+                            <option value="Automatic">أوتوماتيك</option>
+                            <option value="Manual">يدوي</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">نوع
+                            الوقود</label>
+                        <select id="filter-fuel"
+                            class="w-full bg-surface border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right">
+                            <option value="">الكل</option>
+                            <option value="Petrol">بنزين</option>
+                            <option value="Electric">كهرباء</option>
+                            <option value="Hybrid">هجين</option>
+                        </select>
+                    </div>
+                    <button id="apply-filters"
+                        class="w-full bg-white/5 hover:bg-primary hover:text-background-dark p-3 rounded-xl text-xs font-bold transition-all uppercase tracking-widest">تطبيق
+                        الفلاتر</button>
+                    <button id="reset-filters"
+                        class="w-full border border-white/10 text-slate-400 p-3 rounded-xl text-xs font-bold hover:bg-white/5 transition-all uppercase tracking-widest flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-sm">restart_alt</span>
+                        إعادة ضبط
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Cars Grid -->
+        <div class="flex-1">
+            <div id="cars-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-right">
+                <!-- Skeleton Loaders -->
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+                <div class="skeleton h-80 rounded-2xl"></div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-16 flex justify-center items-center gap-4">
+                <button id="prev-page"
+                    class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all disabled:opacity-20 translate-x-1"
+                    disabled>
+                    <span class="material-symbols-outlined transform rotate-180">chevron_right</span>
+                </button>
+                <span id="page-num" class="text-sm font-bold text-primary font-serif italic">1</span>
+                <button id="next-page"
+                    class="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all disabled:opacity-20 -translate-x-1">
+                    <span class="material-symbols-outlined transform rotate-180">chevron_left</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { supabase, getOptimizedUrl, formatPrice, getCachedData, setCachedData } from './supabase.js';
+
+        let currentPage = 1;
+        const itemsPerPage = 6;
+
+        async function initFilters() {
+            let brands = getCachedData('fleet_brands');
+            if (!brands) {
+                const { data } = await supabase.from('cars').select('brand');
+                brands = [...new Set(data.map(c => c.brand).filter(b => b))];
+                setCachedData('fleet_brands', brands);
+            }
+
+            const select = document.getElementById('filter-brand');
+            brands.forEach(brand => {
+                select.innerHTML += `<option value="${brand}">${brand}</option>`;
+            });
+        }
+
+        async function fetchCars() {
+            const grid = document.getElementById('cars-grid');
+            grid.innerHTML = '<div class="skeleton h-80 rounded-2xl"></div>'.repeat(3);
+
+            const brand = document.getElementById('filter-brand').value;
+            const category = document.getElementById('filter-category').value;
+            const transmission = document.getElementById('filter-transmission').value;
+            const fuel = document.getElementById('filter-fuel').value;
+
+            const cacheKey = `fleet-cache-${brand}-${category}-${transmission}-${fuel}-${currentPage}`;
+            const cachedData = getCachedData(cacheKey);
+            if (cachedData) renderCarsList(cachedData.data, cachedData.count, grid);
+
+            const from = (currentPage - 1) * itemsPerPage;
+            const to = from + itemsPerPage - 1;
+
+            let query = supabase.from('cars')
+                .select('id, name, price_per_day, brand, transmission, seats, car_images(url, is_primary)', { count: 'exact' });
+
+            if (brand) query = query.eq('brand', brand);
+            if (category) query = query.eq('category', category);
+            if (transmission) query = query.eq('transmission', transmission);
+            if (fuel) query = query.eq('fuel_type', fuel);
+
+            query = query.range(from, to).order('created_at', { ascending: false });
+
+            const { data, error, count } = await query;
+            if (error) return;
+
+            setCachedData(cacheKey, { data, count });
+            renderCarsList(data, count, grid);
+        }
+
+        function renderCarsList(data, count, grid) {
+            if (data.length === 0) {
+                grid.innerHTML = '<div class="col-span-full py-20 text-center text-slate-500">لا توجد سيارات تطابق الفلاتر المختارة.</div>';
+            } else {
+                grid.innerHTML = data.map(car => {
+                    const primaryImgObj = car.car_images?.find(i => i.is_primary) || car.car_images?.[0];
+                    const primaryImage = getOptimizedUrl(primaryImgObj?.url, { width: 500, quality: 70 });
+                    return `
+                        <div class="group bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all text-right translate-y-0 hover:-translate-y-2">
+                            <div class="h-48 relative overflow-hidden bg-white/5">
+                                <img src="${primaryImage || 'https://images.unsplash.com/photo-1542362567-b055002b91f4'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
+                                <div class="absolute top-4 right-4 bg-background-dark/80 backdrop-blur-md px-3 py-1 rounded-full text-primary border border-white/10 font-sans text-[12px] font-bold">
+                                    ${formatPrice(car.price_per_day)} / يوم
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-white font-serif text-lg italic mb-2">${car.name}</h3>
+                                <div class="flex gap-4 mb-6">
+                                    <div class="flex items-center gap-1 text-[10px] text-slate-400 uppercase tracking-widest">
+                                        <span class="material-symbols-outlined text-sm">airline_seat_recline_extra</span> ${car.seats} مقاعد
+                                    </div>
+                                    <div class="flex items-center gap-1 text-[10px] text-slate-400 uppercase tracking-widest">
+                                        <span class="material-symbols-outlined text-sm">settings</span> ${car.transmission === 'Automatic' ? 'أوتو' : 'يدوي'}
+                                    </div>
+                                </div>
+                                <button onclick="window.location.href='car-details.html?id=${car.id}'"
+                                    class="w-full border border-primary text-primary hover:bg-primary hover:text-background-dark py-3 rounded-lg text-[10px] font-bold uppercase tracking-widest transition-all">
+                                    التفاصيل
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Update Pagination
+            document.getElementById('page-num').textContent = currentPage;
+            document.getElementById('prev-page').disabled = currentPage === 1;
+            document.getElementById('next-page').disabled = count <= (currentPage * itemsPerPage);
+        }
+
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                fetchCars();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        document.getElementById('next-page').addEventListener('click', () => {
+            currentPage++;
+            fetchCars();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.getElementById('apply-filters').addEventListener('click', () => {
+            currentPage = 1;
+            fetchCars();
+        });
+
+        document.getElementById('reset-filters').addEventListener('click', () => {
+            document.getElementById('filter-brand').value = '';
+            document.getElementById('filter-category').value = '';
+            document.getElementById('filter-transmission').value = '';
+            document.getElementById('filter-fuel').value = '';
+            currentPage = 1;
+            fetchCars();
+        });
+
+        initFilters();
+        fetchCars();
+    </script>
+    <!-- Footer -->
+    <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-20 text-right">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 text-right">
+            <div>
+                <a href="index.html" class="flex items-center gap-2 mb-8 justify-end">
+                    <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
+                </a>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
+                    اوتو لاين، 2 مسجد الرحمن الرحيم، هاكستيب، النزهة، محافظة القاهرة 4473212
+                </p>
+                <div class="flex gap-4 mt-8 justify-end">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">facebook</i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">share</i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
+                    استكشف</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
+                    الدعم</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
+                    اتصل بنا</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201003412321</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201154144465</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300">info@autoline-car-rent.com</span>
+                        <span class="material-symbols-outlined text-primary text-lg">mail</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-white/5 pt-10 text-center space-y-4">
+            <p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
+            <a href="https://yaaalla.com/" target="_blank"
+                class="text-slate-500 text-[10px] uppercase tracking-[0.2em] hover:text-primary transition-colors block">
+                Designed by <span class="text-primary font-black">Yaaalla</span>
+            </a>
+        </div>
+    </footer>
+    <script src="mobile_app.js"></script>
+</body>
+
+</html>

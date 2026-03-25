@@ -1,0 +1,25 @@
+/* Skeleton Loading Animation */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #1c1c1c 25%, #252525 50%, #1c1c1c 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 0.75rem;
+}
+
+/* Image Placeholder */
+.img-placeholder {
+    background-color: #1c1c1c;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-placeholder::after {
+    content: "";
+    display: block;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>من نحن | اوتو لاين</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mobile_app.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a96e",
+                        "background-dark": "#12110f",
+                        "surface": "#1c1c1c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Cairo", "sans-serif"],
+                        "serif": ["Cormorant Garamond", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display text-right">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2">
+            <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain"/>
+        </a>
+        <nav class="hidden md:flex items-center gap-10">
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="index.html">الرئيسية</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest text-primary" href="about.html">من نحن</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="fleet.html">سيارات للايجار</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="blog.html">المدونة</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="contact.html">تواصل معنا</a>
+        </nav>
+        <button onclick="window.location.href='fleet.html'" class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">أجر سيارتك</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-48 pb-24 px-6 lg:px-20 bg-background-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div class="order-2 lg:order-1 relative">
+                <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative z-10 aspect-[16/9]">
+                    <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b" alt="Welcome" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"/>
+                </div>
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 border border-primary/20 rounded-full z-0"></div>
+            </div>
+            <div class="order-1 lg:order-2 text-right">
+                <span class="text-primary font-serif uppercase tracking-[0.3em] text-sm mb-4 block italic">اوتو لاين</span>
+                <h2 class="font-serif text-6xl text-white mb-8 italic">مرحبًا بكم في اوتو لاين</h2>
+                <p class="text-slate-400 text-lg font-light leading-relaxed">
+                    مرحبًا بكم في اوتو لاين شركة اوتو لاين هي واحدة من الشركات الرائدة في مجال تأجير السيارات، حيث نهدف إلى تقديم تجربة استثنائية لعملائنا من الأفراد والشركات. نحن نؤمن بتقديم حلول مبتكرة تلبي احتياجات عملائنا وتفوق توقعاتهم.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-24 px-6 lg:px-20 bg-surface">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-right mb-16">
+                <h2 class="font-serif text-4xl text-white mb-4 italic">خدماتنا</h2>
+                <p class="text-slate-400">مجموعة متنوعة من السيارات توفر اوتو لاين مجموعة واسعة تشمل:</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-right">
+                <div class="p-8 border border-white/5 bg-background-dark rounded-2xl">
+                    <h3 class="text-xl font-bold text-primary mb-4">السيارات الاقتصادية</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">مثالية للتنقل اليومي وتوفير الوقود.</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-background-dark rounded-2xl">
+                    <h3 class="text-xl font-bold text-primary mb-4">السيارات العائلية</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">توفر مساحة واسعة وراحة للعائلة.</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-background-dark rounded-2xl">
+                    <h3 class="text-xl font-bold text-primary mb-4">سيارات الدفع الرباعي</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">مناسبة للمغامرات والطرق الوعرة.</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-background-dark rounded-2xl">
+                    <h3 class="text-xl font-bold text-primary mb-4">السيارات الفاخرة</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">لمن يبحثون عن تجربة قيادة فاخرة وأنيقة.</p>
+                </div>
+                <div class="p-8 border border-white/5 bg-background-dark rounded-2xl">
+                    <h3 class="text-xl font-bold text-primary mb-4">السيارات الرياضية</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">لعشاق السرعة والأداء العالي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="py-24 px-6 lg:px-20 bg-background-dark">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+            <div class="p-12 bg-surface rounded-3xl border border-white/5 text-right flex flex-col items-end">
+                <span class="text-primary material-symbols-outlined text-4xl mb-6">visibility</span>
+                <h3 class="font-serif text-3xl text-white mb-6 italic">رؤيتنا</h3>
+                <p class="text-slate-400 leading-relaxed font-light">
+                    أن نكون الخيار الأول في تقديم حلول المواصلات المتميزة والمتنوعة في الشرق الأوسط وأفريقيا، مع التركيز على تقديم أفضل التجارب للعملاء من خلال الحفاظ على أعلى معايير الجودة والتميز.
+                </p>
+            </div>
+            <div class="p-12 bg-surface rounded-3xl border border-white/5 text-right flex flex-col items-end">
+                <span class="text-primary material-symbols-outlined text-4xl mb-6">emoji_objects</span>
+                <h3 class="font-serif text-3xl text-white mb-6 italic">رسالتنا</h3>
+                <p class="text-slate-400 leading-relaxed font-light">
+                    نتبع أعلى معايير الأعمال الأخلاقية من خلال حوكمة فعالة وشفافة مع الالتزام دائمًا بالوفاء بوعودنا للمساهمين والعملاء. نحن نهدف إلى تقديم خدمات تأجير سيارات تتميز بالجودة والاحترافية، مع الحفاظ على رضا العملاء كشعار أساسي لنا.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-24 px-6 lg:px-20 bg-background-dark border-t border-white/5">
+        <div class="max-w-3xl mx-auto text-right">
+            <h2 class="font-serif text-4xl text-white mb-10 italic">قيمنا</h2>
+            <div class="space-y-12">
+                <div class="flex gap-8 items-start justify-end">
+                    <div class="order-2 w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-background-dark">person</span>
+                    </div>
+                    <div class="order-1 text-right">
+                        <h4 class="text-xl font-bold text-white mb-2">العميل أولاً وبشكل دائم</h4>
+                        <p class="text-slate-400 font-light">نضع احتياجات عملائنا في مقدمة أولوياتنا، ونحرص على فهم متطلباتهم وتقديم حلول تتناسب معهم بشكل مثالي.</p>
+                    </div>
+                </div>
+                <div class="flex gap-8 items-start justify-end">
+                    <div class="order-2 w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-background-dark">workspace_premium</span>
+                    </div>
+                    <div class="order-1 text-right">
+                        <h4 class="text-xl font-bold text-white mb-2">الجودة والاحترافية</h4>
+                        <p class="text-slate-400 font-light">نلتزم بتقديم أعلى مستويات الجودة في كل ما نقدمه من خدمات، لضمان رضاكم التام.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="py-24 px-6 lg:px-20 bg-surface">
+        <div class="max-w-7xl mx-auto text-right">
+            <h2 class="font-serif text-5xl text-white mb-16 italic text-center">لماذا تختار اوتو لاين؟</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 bg-background-dark rounded-2xl border border-white/5 group hover:border-primary/30 transition-all text-center">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-6 block">directions_car</span>
+                    <h3 class="text-white font-bold mb-4">تنوع السيارات</h3>
+                    <p class="text-slate-500 text-sm">نحرص على تقديم مجموعة متنوعة لتناسب جميع الاحتياجات.</p>
+                </div>
+                <div class="p-8 bg-background-dark rounded-2xl border border-white/5 group hover:border-primary/30 transition-all text-center">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-6 block">sync</span>
+                    <h3 class="text-white font-bold mb-4">المرونة في الخيارات</h3>
+                    <p class="text-slate-500 text-sm">سواء كنت بحاجة للتأجير ليوم واحد أو لفترة طويلة.</p>
+                </div>
+                <div class="p-8 bg-background-dark rounded-2xl border border-white/5 group hover:border-primary/30 transition-all text-center">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-6 block">verified_user</span>
+                    <h3 class="text-white font-bold mb-4">الجودة والموثوقية</h3>
+                    <p class="text-slate-500 text-sm">سياراتنا تخضع لصيانة دورية لضمان الأمان والراحة.</p>
+                </div>
+                <div class="p-8 bg-background-dark rounded-2xl border border-white/5 group hover:border-primary/30 transition-all text-center">
+                    <span class="material-symbols-outlined text-3xl text-primary mb-6 block">headset_mic</span>
+                    <h3 class="text-white font-bold mb-4">دعم العملاء المستمر</h3>
+                    <p class="text-slate-500 text-sm">فريق الدعم لدينا متاح على مدار الساعة لتقديم المساعدة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-20 text-right">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 text-right">
+            <div>
+                <a href="index.html" class="flex items-center gap-2 mb-8 justify-end">
+                    <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
+                </a>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
+                    اوتو لاين، 2 مسجد الرحمن الرحيم، هاكستيب، النزهة، محافظة القاهرة 4473212
+                </p>
+                <div class="flex gap-4 mt-8 justify-end">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">facebook</i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">share</i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">استكشف</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">الدعم</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">اتصل بنا</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201003412321</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201154144465</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300">info@autoline-car-rent.com</span>
+                        <span class="material-symbols-outlined text-primary text-lg">mail</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-white/5 pt-10 text-center space-y-4">
+            <p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
+            <a href="https://yaaalla.com/" target="_blank" class="text-slate-500 text-[10px] uppercase tracking-[0.2em] hover:text-primary transition-colors block">
+                Designed by <span class="text-primary font-black">Yaaalla</span>
+            </a>
+        </div>
+    </footer>
+    <link rel="stylesheet" href="mobile_app.css">
+    <script src="mobile_app.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>إدارة المشرفين | لوحة التحكم</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a96e",
+                        "background-dark": "#12110f",
+                        "surface": "#1c1c1c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Cairo", "sans-serif"],
+                        "serif": ["Cormorant Garamond", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display flex flex-col md:flex-row min-h-screen">
+    <aside class="w-full md:w-64 border-l border-white/5 bg-surface p-8 text-right space-y-10 flex flex-col">
+        <div class="flex items-center gap-2 mb-10 justify-end">
+            <h1 class="font-serif text-2xl font-bold italic text-primary">AutoLine Admin</h1>
+        </div>
+        
+        <nav class="flex-1 space-y-4">
+            <a href="admin_dashboard.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-slate-400 text-sm font-bold transition-all">
+                <span class="material-symbols-outlined">dashboard</span>
+                لوحة التحكم
+            </a>
+            <a href="admin-cars.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-slate-400 text-sm font-bold transition-all">
+                <span class="material-symbols-outlined">directions_car</span>
+                السيارات
+            </a>
+            <a href="admin-blogs.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-slate-400 text-sm font-bold transition-all">
+                <span class="material-symbols-outlined">article</span>
+                المدونة
+            </a>
+            <a href="admin-admins.html" class="flex items-center gap-3 p-3 rounded-xl bg-primary text-background-dark font-black text-sm">
+                <span class="material-symbols-outlined">group</span>
+                المشرفين
+            </a>
+        </nav>
+        <button id="logout-btn" class="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 text-sm font-bold transition-all w-full text-right mt-20">
+            <span class="material-symbols-outlined">logout</span>
+            خروج
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 lg:p-12 overflow-y-auto">
+        <div class="flex justify-between items-center mb-12">
+            <div>
+                <h2 class="font-serif text-3xl text-white italic">المشرفين والنظام</h2>
+                <p class="text-slate-500 text-xs mt-2 uppercase tracking-widest">إدارة صلاحيات الوصول</p>
+            </div>
+        </div>
+
+        <div class="max-w-4xl bg-surface p-10 rounded-3xl border border-white/5 text-right">
+            <div class="space-y-8" id="admins-list">
+                <!-- Loaded via JS -->
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { supabase } from './supabase.js';
+
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) window.location.href = 'admin-login.html';
+        }
+
+        async function fetchAdmins() {
+            const { data, error } = await supabase.from('admins').select('*');
+            if (error) return;
+
+            const list = document.getElementById('admins-list');
+            list.innerHTML = data.map(admin => `
+                <div class="flex justify-between items-center border-b border-white/5 pb-6 last:border-0 last:pb-0">
+                    <div class="text-right">
+                        <p class="text-white font-serif text-xl italic">${admin.full_name}</p>
+                        <p class="text-slate-500 text-xs lowercase">${admin.email}</p>
+                    </div>
+                    <div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] uppercase font-black">
+                        ${admin.role}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = 'admin-login.html';
+        });
+
+        checkAuth();
+        fetchAdmins();
+    </script>
+</body>
+</html>

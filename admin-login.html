@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>تسجيل الدخول | لوحة التحكم</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a96e",
+                        "background-dark": "#12110f",
+                        "surface": "#1c1c1c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Cairo", "sans-serif"],
+                        "serif": ["Cormorant Garamond", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="mobile_app.css">
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-md w-full bg-surface p-10 rounded-3xl border border-white/5 shadow-2xl text-right">
+        <div class="text-center mb-10">
+            <span class="text-primary material-symbols-outlined text-4xl mb-4">admin_panel_settings</span>
+            <h2 class="font-serif text-3xl text-white italic">دخول الإدارة</h2>
+            <p class="text-slate-500 text-[10px] uppercase tracking-widest mt-2">نظام أوتو لاين المركزي</p>
+        </div>
+
+        <form id="login-form" class="space-y-6">
+            <div>
+                <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-3">البريد الإلكتروني</label>
+                <input type="email" id="email" class="w-full bg-background-dark border-white/10 rounded-xl p-4 text-sm focus:ring-primary text-right" placeholder="admin@autoline.com"/>
+            </div>
+            <div>
+                <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-3">كلمة المرور</label>
+                <input type="password" id="password" class="w-full bg-background-dark border-white/10 rounded-xl p-4 text-sm focus:ring-primary text-right" placeholder="••••••••"/>
+            </div>
+            <button type="submit" class="w-full bg-primary text-background-dark font-black py-4 rounded-xl uppercase tracking-widest hover:bg-white transition-all shadow-xl">
+                دخول
+            </button>
+        </form>
+    </div>
+
+    <script type="module">
+        import { supabase } from './supabase.js';
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                alert('فشل تسجيل الدخول: ' + error.message);
+            } else {
+                window.location.href = 'admin-cars.html';
+            }
+        });
+
+        // Check if already logged in
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session) {
+            window.location.href = 'admin-cars.html';
+        }
+    </script>
+    <script src="mobile_app.js"></script>
+</body></html>

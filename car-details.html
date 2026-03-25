@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>تفاصيل السيارة | أوتو لاين</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="mobile_app.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a96e",
+                        "background-dark": "#12110f",
+                        "surface": "#1c1c1c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Cairo", "sans-serif"],
+                        "serif": ["Cormorant Garamond", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display">
+    <header
+        class="fixed top-0 w-full z-50 border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2">
+            <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain"/>
+        </a>
+        <nav class="hidden md:flex items-center gap-10">
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="index.html">الرئيسية</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="about.html">من نحن</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest text-primary" href="fleet.html">سيارات للايجار</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="blog.html">المدونة</a>
+            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="contact.html">تواصل معنا</a>
+        </nav>
+        <button onclick="window.location.href='fleet.html'"
+            class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">
+            أجر سيارتك
+        </button>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 lg:px-20 max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
+        <!-- Content Side -->
+        <div class="space-y-12 text-right">
+            <div>
+                <span id="car-brand" class="text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">BRAND</span>
+                <h1 id="car-name" class="font-serif text-5xl md:text-7xl text-white mb-6 italic">...</h1>
+                <div class="flex items-center gap-6">
+                    <span id="car-price" class="font-serif text-3xl text-primary">$0</span>
+                    <span class="text-slate-500 uppercase tracking-widest text-[10px] transform translate-y-2">لكل يوم</span>
+                </div>
+            </div>
+
+            <p id="car-description" class="text-slate-400 text-lg font-light leading-relaxed">
+                جار التحميل...
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">settings</span>
+                    <p id="spec-trans" class="text-white text-[10px] font-bold font-serif italic">Auto</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">ناقل الحركة</p>
+                </div>
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">local_gas_station</span>
+                    <p id="spec-fuel" class="text-white text-[10px] font-bold font-serif italic">Petrol</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">الوقود</p>
+                </div>
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">airline_seat_recline_extra</span>
+                    <p id="spec-seats" class="text-white text-[10px] font-bold font-serif italic">4</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">مقاعد</p>
+                </div>
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">calendar_month</span>
+                    <p id="spec-year" class="text-white text-[10px] font-bold font-serif italic">2023</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">الموديل</p>
+                </div>
+                <!-- New Specs -->
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">speed</span>
+                    <p id="spec-mileage" class="text-white text-[10px] font-bold font-serif italic">0 كم</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">المسافة</p>
+                </div>
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">palette</span>
+                    <p id="spec-color" class="text-white text-[10px] font-bold font-serif italic">أسود</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">اللون</p>
+                </div>
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">tire_repair</span>
+                    <p id="spec-tire" class="text-white text-[10px] font-bold font-serif italic">ممتازة</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">الكاوتش</p>
+                </div>
+                <div class="p-3 border border-white/5 bg-white/5 rounded-xl text-center">
+                    <span class="material-symbols-outlined text-primary mb-1 text-3xl">verified</span>
+                    <p id="spec-status" class="text-white text-[10px] font-bold font-serif italic">100%</p>
+                    <p class="text-slate-500 text-[8px] uppercase tracking-widest mt-0.5">الحالة</p>
+                </div>
+            </div>
+
+
+            <!-- Booking Section -->
+            <div class="bg-surface p-8 rounded-2xl border border-white/5 space-y-6">
+                <h3 class="font-serif text-xl text-white italic">احجز رحلتك الآن</h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <input id="book-name" type="text" placeholder="الاسم بالكامل" class="bg-background-dark border-white/10 rounded-xl p-4 text-sm focus:ring-primary w-full text-right"/>
+                    <input id="book-phone" type="text" placeholder="رقم الهاتف" class="bg-background-dark border-white/10 rounded-xl p-4 text-sm focus:ring-primary w-full text-right"/>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="block text-[8px] uppercase font-bold text-slate-500 tracking-widest text-right">تاريخ الاستلام</label>
+                        <input id="book-start" type="date" class="bg-background-dark border-white/10 rounded-xl p-4 text-sm focus:ring-primary w-full text-right text-white"/>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-[8px] uppercase font-bold text-slate-500 tracking-widest text-right">تاريخ التسليم</label>
+                        <input id="book-end" type="date" class="bg-background-dark border-white/10 rounded-xl p-4 text-sm focus:ring-primary w-full text-right text-white"/>
+                    </div>
+                </div>
+                <button id="cta-book" class="w-full bg-primary text-background-dark font-black py-4 rounded-xl uppercase tracking-widest hover:bg-white transition-all shadow-xl flex items-center justify-center gap-3">
+                    <span class="material-symbols-outlined">chat</span>
+                    الحجز عبر واتساب
+                </button>
+                <p class="text-center text-[10px] text-slate-500 uppercase tracking-widest">سيتم تسجيل طلبك في نظامنا والتواصل معك فوراً</p>
+            </div>
+        </div>
+
+        <!-- Image Side -->
+        <div class="space-y-4">
+            <div id="main-image-container" class="rounded-3xl overflow-hidden aspect-video border border-white/5 relative bg-black/40 skeleton flex items-center justify-center">
+                <img id="main-image" src="" alt="Car" class="max-w-full max-h-full object-contain transition-opacity duration-500 opacity-0"/>
+            </div>
+            <div id="thumb-grid" class="grid grid-cols-4 gap-4">
+                <!-- Thumbnails Skeletons -->
+                <div class="aspect-square rounded-xl bg-white/5 skeleton"></div>
+                <div class="aspect-square rounded-xl bg-white/5 skeleton"></div>
+                <div class="aspect-square rounded-xl bg-white/5 skeleton"></div>
+                <div class="aspect-square rounded-xl bg-white/5 skeleton"></div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { supabase, getOptimizedUrl, formatPrice, getCachedData, setCachedData } from './supabase.js';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const carId = urlParams.get('id');
+
+        async function fetchCarDetails() {
+            if(!carId) return;
+            const cacheKey = `car-detail-${carId}`;
+
+            // 1. Show Cached Data Immediately
+            const cachedData = getCachedData(cacheKey);
+            if (cachedData) {
+                renderCarDetails(cachedData);
+            }
+
+            // 2. Fetch Latest in Background
+            const { data: car, error } = await supabase
+                .from('cars')
+                .select(`
+                    id, name, price_per_day, brand, description, 
+                    transmission, fuel_type, seats, year, 
+                    mileage_km, color, tire_status, car_status_percent, 
+                    car_images(url, is_primary)
+                `)
+                .eq('id', carId)
+                .single();
+
+            if (error) {
+                console.error(error);
+                return;
+            }
+
+            // 3. Update UI and Cache
+            setCachedData(cacheKey, car);
+            renderCarDetails(car);
+        }
+
+        function renderCarDetails(car) {
+            document.getElementById('car-brand').textContent = car.brand;
+            document.getElementById('car-name').textContent = car.name;
+            document.getElementById('car-price').textContent = formatPrice(car.price_per_day);
+            document.getElementById('car-description').textContent = car.description || 'لا يوجد وصف متاح حالياً لهذه السيارة الفاخرة.';
+            
+            document.getElementById('spec-trans').textContent = car.transmission === 'Automatic' ? 'أوتو' : 'يدوي';
+            document.getElementById('spec-fuel').textContent = car.fuel_type === 'Petrol' ? 'بنزين' : car.fuel_type;
+            document.getElementById('spec-seats').textContent = car.seats;
+            document.getElementById('spec-year').textContent = car.year || '2024';
+            
+            document.getElementById('spec-mileage').textContent = `${car.mileage_km || 0} كم`;
+            document.getElementById('spec-color').textContent = car.color || 'غير محدد';
+            document.getElementById('spec-tire').textContent = car.tire_status || 'جيدة';
+            document.getElementById('spec-status').textContent = `${car.car_status_percent || 100}%`;
+
+            const primaryImgObj = car.car_images?.find(img => img.is_primary) || car.car_images?.[0];
+            const mainImgUrl = primaryImgObj?.url;
+            const mainImgElement = document.getElementById('main-image');
+            
+            if (mainImgUrl) {
+                mainImgElement.src = getOptimizedUrl(mainImgUrl, { width: 1000, quality: 80 });
+                mainImgElement.onload = () => {
+                    mainImgElement.classList.remove('opacity-0');
+                    document.getElementById('main-image-container').classList.remove('skeleton');
+                };
+            }
+
+            const thumbGrid = document.getElementById('thumb-grid');
+            thumbGrid.innerHTML = car.car_images.map(img => {
+                const thumbUrl = getOptimizedUrl(img.url, { width: 200, quality: 60 });
+                const mediumUrl = getOptimizedUrl(img.url, { width: 1000, quality: 80 });
+                return `
+                    <div class="aspect-square rounded-xl overflow-hidden cursor-pointer border border-white/10 hover:border-primary transition-all bg-white/5" 
+                         onclick="const mi = document.getElementById('main-image'); mi.classList.add('opacity-0'); setTimeout(() => { mi.src='${mediumUrl}'; mi.classList.remove('opacity-0'); }, 200)">
+                        <img src="${thumbUrl}" class="w-full h-full object-cover" loading="lazy"/>
+                    </div>
+                `;
+            }).join('');
+
+            // Setup Booking CTA
+            const ctaBook = document.getElementById('cta-book');
+            const newCtaBook = ctaBook.cloneNode(true);
+            ctaBook.parentNode.replaceChild(newCtaBook, ctaBook);
+            newCtaBook.addEventListener('click', () => handleBooking(car));
+
+            // SEO: Structured Data
+            const jsonLd = {
+                "@context": "https://schema.org",
+                "@type": "Product",
+                "name": car.name,
+                "description": car.description,
+                "brand": {
+                    "@type": "Brand",
+                    "name": car.brand
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": car.price_per_day,
+                    "priceCurrency": "EGP",
+                    "availability": "https://schema.org/InStock"
+                }
+            };
+            const existingScript = document.getElementById('car-json-ld');
+            if (existingScript) existingScript.remove();
+            
+            const script = document.createElement('script');
+            script.id = 'car-json-ld';
+            script.type = 'application/ld+json';
+            script.text = JSON.stringify(jsonLd);
+            document.head.appendChild(script);
+        }
+
+        async function handleBooking(car) {
+            const name = document.getElementById('book-name').value.trim();
+            const phone = document.getElementById('book-phone').value.trim();
+            const start = document.getElementById('book-start').value;
+            const end = document.getElementById('book-end').value;
+
+            if(!name || !phone || !start || !end) {
+                alert('يرجى إكمال جميع البيانات (الاسم، الهاتف، والتواريخ) للمتابعة');
+                return;
+            }
+
+            const startDate = new Date(start);
+            const endDate = new Date(end);
+            const diffTime = Math.abs(endDate - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
+            const totalPrice = car.price_per_day * diffDays;
+
+            // 1. Log to Supabase Bookings table
+            const { error: dbError } = await supabase.from('bookings').insert({
+                car_id: car.id,
+                user_name: name,
+                phone: phone,
+                date_start: start,
+                date_end: end,
+                message: `طلب حجز سيارة ${car.name} من ${start} إلى ${end} (الإجمالي: ${formatPrice(totalPrice)})`
+            });
+
+            if(dbError) console.error('Error logging booking:', dbError);
+
+            // 2. Format WhatsApp Message
+            const whatsappNumber = '201015699313'; // Official AutoLine Number
+            const message = encodeURIComponent(`مرحباً، أود حجز سيارة:
+السيارة: ${car.brand} ${car.name}
+الاسم: ${name}
+الهاتف: ${phone}
+من تاريخ: ${start}
+إلى تاريخ: ${end}
+المدة: ${diffDays} أيام
+الإجمالي: ${formatPrice(totalPrice)}
+
+هل السيارة متاحة في هذه التواريخ؟`);
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+
+        fetchCarDetails();
+    </script>
+    <!-- Footer -->
+    <footer class="bg-background-dark border-t border-white/5 pt-20 pb-10 px-6 lg:px-20 text-right">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20 text-right">
+            <div>
+                <a href="index.html" class="flex items-center gap-2 mb-8 justify-end">
+                    <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
+                </a>
+                <p class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
+                    اوتو لاين، 2 مسجد الرحمن الرحيم، هاكستيب، النزهة، محافظة القاهرة 4473212
+                </p>
+                <div class="flex gap-4 mt-8 justify-end">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">facebook</i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all">
+                        <i class="material-symbols-outlined text-sm">share</i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">استكشف</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">الدعم</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li><a class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
+                    <li><a class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">اتصل بنا</h5>
+                <ul class="space-y-4 text-slate-500 text-sm">
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201003412321</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300 font-bold">+201154144465</span>
+                        <span class="material-symbols-outlined text-primary text-lg">call</span>
+                    </li>
+                    <li class="flex items-center gap-3 justify-end text-sm">
+                        <span class="text-slate-300">info@autoline-car-rent.com</span>
+                        <span class="material-symbols-outlined text-primary text-lg">mail</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto border-t border-white/5 pt-10 text-center space-y-4">
+            <p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
+            <a href="https://yaaalla.com/" target="_blank" class="text-slate-500 text-[10px] uppercase tracking-[0.2em] hover:text-primary transition-colors block">
+                Designed by <span class="text-primary font-black">Yaaalla</span>
+            </a>
+        </div>
+    </footer>
+    <link rel="stylesheet" href="mobile_app.css">
+    <script src="mobile_app.js"></script>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="dark" lang="ar" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>إدارة السيارات | لوحة التحكم</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c9a96e",
+                        "background-dark": "#12110f",
+                        "surface": "#1c1c1c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Cairo", "sans-serif"],
+                        "serif": ["Cormorant Garamond", "serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-dark text-slate-100 font-display flex flex-col md:flex-row min-h-screen">
+    <aside class="w-full md:w-64 border-l border-white/5 bg-surface p-8 text-right space-y-10 flex flex-col">
+        <div class="flex items-center gap-2 mb-10 justify-end">
+            <h1 class="font-serif text-2xl font-bold italic text-primary">AutoLine Admin</h1>
+        </div>
+
+        <nav class="flex-1 space-y-4">
+
+            <a href="admin-cars.html"
+                class="flex items-center gap-3 p-3 rounded-xl bg-primary text-background-dark font-black text-sm">
+                <span class="material-symbols-outlined">directions_car</span>
+                السيارات
+            </a>
+            <a href="admin-blogs.html"
+                class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-slate-400 text-sm font-bold transition-all">
+                <span class="material-symbols-outlined">article</span>
+                المدونة
+            </a>
+
+        </nav>
+        <button id="logout-btn"
+            class="flex items-center gap-3 p-3 rounded-xl hover:bg-red-500/10 text-red-400 text-sm font-bold transition-all w-full text-right mt-20">
+            <span class="material-symbols-outlined">logout</span>
+            خروج
+        </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 lg:p-12 overflow-y-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <button onclick="document.getElementById('car-modal').classList.remove('hidden')"
+                    class="bg-primary text-background-dark px-6 py-2 rounded-lg font-black text-sm hover:bg-white transition-all shadow-xl whitespace-nowrap">
+                    إضافة سيارة جديدة
+                </button>
+                <div class="relative flex-1 md:w-80">
+                    <span
+                        class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+                    <input type="text" id="search-cars" placeholder="ابحث باسم السيارة..."
+                        class="w-full bg-surface border-white/5 rounded-xl pr-10 pl-4 py-2 text-sm focus:ring-primary text-right text-white" />
+                </div>
+            </div>
+            <h2 class="font-serif text-3xl text-white italic">إدارة الأسطول</h2>
+        </div>
+
+        <div class="bg-surface rounded-2xl border border-white/5 overflow-hidden">
+            <table class="w-full text-right">
+                <thead class="bg-white/5 border-b border-white/5">
+                    <tr>
+                        <th class="p-4 text-[10px] uppercase tracking-widest text-slate-500">السيارة</th>
+                        <th class="p-4 text-[10px] uppercase tracking-widest text-slate-500">الماركة</th>
+                        <th class="p-4 text-[10px] uppercase tracking-widest text-slate-500">السعر اليومي</th>
+                        <th class="p-4 text-[10px] uppercase tracking-widest text-slate-500">الحالة</th>
+                        <th class="p-4 text-[10px] uppercase tracking-widest text-slate-500">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="cars-table-body">
+                    <!-- Loaded via JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Car Modal -->
+    <div id="car-modal"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center p-6 bg-background-dark/95 backdrop-blur-sm">
+        <div
+            class="w-full max-w-4xl bg-surface p-10 rounded-3xl border border-white/5 text-right max-h-[90vh] overflow-y-auto">
+            <h3 id="modal-title" class="font-serif text-2xl text-white italic mb-10">إضافة سيارة</h3>
+            <form id="car-form" class="space-y-6">
+                <input type="hidden" id="car-id" />
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">اسم
+                            السيارة</label>
+                        <input type="text" id="name"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right"
+                            required />
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">الماركة</label>
+                        <input type="text" id="brand"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right"
+                            required />
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">الموديل</label>
+                        <input type="text" id="model"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right"
+                            required />
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">السعر /
+                            يوم (ج.م)</label>
+                        <input type="number" id="price"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right"
+                            required />
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">الفئة</label>
+                        <select id="category"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right">
+                            <option value="Supercar">رياضية خارقة</option>
+                            <option value="Luxury Sedan">سيدان فاخرة</option>
+                            <option value="SUV">دفع رباعي</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">المقاعد</label>
+                        <input type="number" id="seats"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right" />
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">سنة
+                            الموديل</label>
+                        <input type="number" id="year"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right" />
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">ناقل
+                            الحركة</label>
+                        <select id="transmission"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right">
+                            <option value="Automatic">أوتوماتيك</option>
+                            <option value="Manual">يدوي</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">نوع
+                            الوقود</label>
+                        <select id="fuel"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right">
+                            <option value="Petrol">بنزين</option>
+                            <option value="Electric">كهرباء</option>
+                            <option value="Hybrid">هجين</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">اللون</label>
+                        <input type="text" id="color"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right" />
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">المسافة
+                            (كم)</label>
+                        <input type="number" id="mileage"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right" />
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">حالة
+                            الكاوتش</label>
+                        <input type="text" id="tire_status"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right"
+                            placeholder="جديد، جيد، مستعمل" />
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">حالة
+                            السيارة (%)</label>
+                        <input type="number" id="car_status"
+                            class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right"
+                            placeholder="100" />
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <label class="block text-[10px] uppercase font-bold text-primary tracking-widest">رفع صور
+                        (متعدد)</label>
+                    <div id="image-preview-container"
+                        class="grid grid-cols-4 sm:grid-cols-6 gap-2 min-h-[50px] border-2 border-dashed border-white/5 rounded-xl p-2 bg-black/20">
+                        <div
+                            class="col-span-full text-[10px] text-slate-500 text-center py-2 flex flex-col items-center gap-1">
+                            <span class="material-symbols-outlined text-lg">cloud_upload</span>
+                            <span>اختر صوراً للمعاينة</span>
+                        </div>
+                    </div>
+                    <input type="file" id="image-files" multiple accept="image/*"
+                        class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right text-slate-500 cursor-pointer" />
+                    <p class="text-[9px] text-slate-500 text-right">يمكنك اختيار أكثر من صورة بالضغط المطول على Ctrl أو
+                        Cmd</p>
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase font-bold text-primary tracking-widest mb-2">أو روابط صور
+                        خارجية (مفصولة بفاصلة)</label>
+                    <textarea id="images"
+                        class="w-full bg-background-dark border-white/10 rounded-xl p-3 text-sm focus:ring-primary text-right"
+                        placeholder="https://image1.jpg, https://image2.jpg"></textarea>
+                </div>
+                <div class="flex gap-4 pt-10">
+                    <button type="submit" id="submit-btn"
+                        class="flex-1 bg-primary text-background-dark font-black py-3 rounded-xl uppercase tracking-widest hover:bg-white transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                        <span>حفظ</span>
+                    </button>
+                    <button type="button" onclick="document.getElementById('car-modal').classList.add('hidden')"
+                        class="flex-1 bg-white/5 text-white font-bold py-3 rounded-xl uppercase tracking-widest hover:bg-white/10 transition-all">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { supabase } from './supabase.js';
+
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) window.location.href = 'admin-login.html';
+        }
+
+        async function fetchCars(searchTerm = '') {
+            let query = supabase.from('cars').select('*, car_images(url)').order('created_at', { ascending: false });
+
+            if (searchTerm) {
+                query = query.ilike('name', `%${searchTerm}%`);
+            }
+
+            const { data, error } = await query;
+            if (error) return;
+
+            const tbody = document.getElementById('cars-table-body');
+            tbody.innerHTML = data.map(car => `
+                <tr class="border-b border-white/5 hover:bg-white/[0.02]">
+                    <td class="p-4 text-sm font-serif italic text-white">${car.name}</td>
+                    <td class="p-4 text-sm text-slate-400">${car.brand}</td>
+                    <td class="p-4 text-sm font-bold text-primary">$${car.price_per_day}</td>
+                    <td class="p-4 text-xs font-bold ${car.is_available ? 'text-green-400' : 'text-red-400'}">${car.is_available ? 'متاح' : 'محجوز'}</td>
+                    <td class="p-4 flex gap-3 justify-end items-center">
+                        <button onclick="editCar('${car.id}')" class="text-primary hover:text-white transition-all"><span class="material-symbols-outlined text-sm">edit</span></button>
+                        <button onclick="deleteCar('${car.id}')" class="text-red-500 hover:text-red-400 transition-all"><span class="material-symbols-outlined text-sm">delete</span></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        window.deleteCar = async (id) => {
+            if (!confirm('هل أنت متأكد من حذف هذه السيارة؟')) return;
+            const { error } = await supabase.from('cars').delete().eq('id', id);
+            if (!error) fetchCars();
+        }
+
+        window.editCar = async (id) => {
+            const { data: car } = await supabase.from('cars').select('*, car_images(*)').eq('id', id).single();
+            if (!car) return;
+
+            document.getElementById('car-id').value = car.id;
+            document.getElementById('name').value = car.name;
+            document.getElementById('brand').value = car.brand;
+            document.getElementById('model').value = car.model || '';
+            document.getElementById('price').value = car.price_per_day;
+            document.getElementById('category').value = car.category;
+            document.getElementById('seats').value = car.seats;
+            document.getElementById('year').value = car.year || '';
+            document.getElementById('transmission').value = car.transmission || 'Automatic';
+            document.getElementById('fuel').value = car.fuel_type || 'Petrol';
+            document.getElementById('color').value = car.color || '';
+            document.getElementById('mileage').value = car.mileage_km || '';
+            document.getElementById('tire_status').value = car.tire_status || '';
+            document.getElementById('car_status').value = car.car_status_percent || 100;
+            document.getElementById('images').value = car.car_images.map(i => i.url).join(', ');
+
+            document.getElementById('modal-title').textContent = 'تعديل سيارة';
+            document.getElementById('car-modal').classList.remove('hidden');
+            document.getElementById('image-preview-container').innerHTML = `<div class="col-span-full text-[10px] text-slate-500 text-center py-2">سيتم عرض الصور المختارة هنا</div>`;
+        }
+
+        // Image Preview Logic
+        document.getElementById('image-files').addEventListener('change', function (e) {
+            const container = document.getElementById('image-preview-container');
+            container.innerHTML = '';
+
+            if (this.files.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-[10px] text-slate-500 text-center py-2">اختر صوراً للمعاينة</div>';
+                return;
+            }
+
+            Array.from(this.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const div = document.createElement('div');
+                    div.className = 'aspect-square rounded-lg overflow-hidden border border-white/10 bg-white/5 relative group';
+                    div.innerHTML = `<img src="${event.target.result}" class="w-full h-full object-cover" />`;
+                    container.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        document.getElementById('car-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('car-id').value;
+            const carData = {
+                name: document.getElementById('name').value,
+                brand: document.getElementById('brand').value,
+                model: document.getElementById('model').value,
+                price_per_day: document.getElementById('price').value,
+                category: document.getElementById('category').value,
+                seats: document.getElementById('seats').value,
+                year: document.getElementById('year').value,
+                transmission: document.getElementById('transmission').value,
+                fuel_type: document.getElementById('fuel').value,
+                color: document.getElementById('color').value,
+                mileage_km: document.getElementById('mileage').value,
+                tire_status: document.getElementById('tire_status').value,
+                car_status_percent: document.getElementById('car_status').value,
+            };
+
+            const imageFiles = document.getElementById('image-files').files;
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span><span>جاري الحفظ...</span>`;
+
+            let uploadedUrls = [];
+
+            // Parallel file uploads
+            try {
+                const uploadPromises = Array.from(imageFiles).map(async (file) => {
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
+                    const { data, error: uploadError } = await supabase.storage.from('cars').upload(fileName, file);
+
+                    if (uploadError) throw uploadError;
+
+                    const { data: { publicUrl } } = supabase.storage.from('cars').getPublicUrl(fileName);
+                    return publicUrl;
+                });
+
+                uploadedUrls = await Promise.all(uploadPromises);
+            } catch (error) {
+                console.error('Upload Error:', error);
+                alert('خطأ في رفع الصور: ' + error.message);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                return;
+            }
+
+            const externalUrls = document.getElementById('images').value.split(',').map(u => u.trim()).filter(u => u);
+            const allImageUrls = [...uploadedUrls, ...externalUrls];
+
+            let res;
+            if (id) {
+                res = await supabase.from('cars').update(carData).eq('id', id).select();
+            } else {
+                res = await supabase.from('cars').insert(carData).select();
+            }
+
+            if (!res.error) {
+                const targetId = res.data[0].id;
+                // Update images
+                await supabase.from('car_images').delete().eq('car_id', targetId);
+                const imageObjects = allImageUrls.map((url, idx) => ({
+                    car_id: targetId,
+                    url,
+                    is_primary: idx === 0
+                }));
+                if (imageObjects.length > 0) await supabase.from('car_images').insert(imageObjects);
+
+                document.getElementById('car-modal').classList.add('hidden');
+                document.getElementById('car-form').reset();
+                document.getElementById('image-preview-container').innerHTML = '';
+                fetchCars();
+            } else {
+                alert('خطأ في حفظ البيانات: ' + res.error.message);
+            }
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        });
+
+        document.getElementById('logout-btn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            window.location.href = 'admin-login.html';
+        });
+
+        document.getElementById('search-cars').addEventListener('input', (e) => {
+            fetchCars(e.target.value);
+        });
+
+        checkAuth();
+        fetchCars();
+    </script>
+</body>
+
+</html>
