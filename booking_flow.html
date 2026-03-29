@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="i18n.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -50,13 +51,18 @@
             <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain"/>
         </a>
         <nav class="hidden md:flex items-center gap-10">
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="index.html">الرئيسية</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="about.html">من نحن</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="fleet.html">سيارات للايجار</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="blog.html">المدونة</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="contact.html">تواصل معنا</a>
+            <a data-i18n="nav_home" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="index.html">الرئيسية</a>
+            <a data-i18n="nav_about" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="about.html">من نحن</a>
+            <a data-i18n="nav_fleet" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="fleet.html">سيارات للايجار</a>
+            <a data-i18n="nav_blog" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="blog.html">المدونة</a>
+            <a data-i18n="nav_contact" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest" href="contact.html">تواصل معنا</a>
         </nav>
-        <button onclick="window.location.href='fleet.html'" class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">أجر سيارتك</button>
+        <div class="flex items-center gap-4">
+            <button onclick="window.i18n.toggleLanguage()" class="lang-toggle-btn text-xs font-bold border border-white/20 px-3 py-1 rounded hover:bg-white/10 transition-all">
+                EN
+            </button>
+            <button onclick="window.location.href='fleet.html'" data-i18n="nav_cta" class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">أجر سيارتك</button>
+        </div>
     </header>
 <!-- Main Content Container -->
 <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
@@ -64,17 +70,17 @@
 <nav class="flex items-center justify-center gap-4 mb-10 overflow-x-auto pb-4 no-scrollbar">
 <div class="flex items-center gap-2 text-primary font-bold">
 <span class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center text-sm">1</span>
-<span class="whitespace-nowrap">Booking Details</span>
+<span data-i18n="booking_details" class="whitespace-nowrap">Booking Details</span>
 </div>
 <div class="w-12 h-px bg-border-dark"></div>
 <div class="flex items-center gap-2 text-slate-400 font-medium">
 <span class="w-8 h-8 rounded-full border-2 border-border-dark flex items-center justify-center text-sm">2</span>
-<span class="whitespace-nowrap">Personal Info</span>
+<span data-i18n="personal_info" class="whitespace-nowrap">Personal Info</span>
 </div>
 <div class="w-12 h-px bg-border-dark"></div>
 <div class="flex items-center gap-2 text-slate-400 font-medium">
 <span class="w-8 h-8 rounded-full border-2 border-border-dark flex items-center justify-center text-sm">3</span>
-<span class="whitespace-nowrap">Payment</span>
+<span data-i18n="payment" class="whitespace-nowrap">Payment</span>
 </div>
 </nav>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -84,30 +90,30 @@
 <section class="bg-surface-dark rounded-xl p-8 border border-border-dark shadow-sm">
 <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">person</span>
-                                Personal Information
-                            </h3>
+<span data-i18n="personal_info">Personal Information</span>
+</h3>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="space-y-2">
-<label class="text-sm font-medium text-slate-400">Full Name</label>
-<input class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="John Doe" type="text"/>
+<label data-i18n="book_name" class="text-sm font-medium text-slate-400">Full Name</label>
+<input data-i18n="contact_name_placeholder" class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="John Doe" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="text-sm font-medium text-slate-400">Email Address</label>
-<input class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="john@example.com" type="email"/>
+<label data-i18n="contact_email_title" class="text-sm font-medium text-slate-400">Email Address</label>
+<input data-i18n="contact_email_placeholder" class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="john@example.com" type="email"/>
 </div>
 <div class="space-y-2">
-<label class="text-sm font-medium text-slate-400">Phone Number</label>
+<label data-i18n="book_phone" class="text-sm font-medium text-slate-400">Phone Number</label>
 <input class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="+1 (555) 000-0000" type="tel"/>
 </div>
 <div class="space-y-2">
-<label class="text-sm font-medium text-slate-400">Driver's License Number</label>
+<label data-i18n="driver_license" class="text-sm font-medium text-slate-400">Driver's License Number</label>
 <input class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="A123-456-789" type="text"/>
 </div>
 <div class="md:col-span-2 space-y-2">
-<label class="text-sm font-medium text-slate-400">Upload Driver's License</label>
+<label data-i18n="upload_license" class="text-sm font-medium text-slate-400">Upload Driver's License</label>
 <div class="border-2 border-dashed border-border-dark rounded-lg p-6 flex flex-col items-center justify-center bg-background-dark/50 hover:border-primary/50 transition-colors cursor-pointer group">
 <span class="material-symbols-outlined text-3xl text-slate-500 group-hover:text-primary mb-2">cloud_upload</span>
-<p class="text-sm text-slate-400 group-hover:text-slate-300">Drag &amp; drop or click to upload</p>
+<p data-i18n="upload_tip" class="text-sm text-slate-400 group-hover:text-slate-300">Drag &amp; drop or click to upload</p>
 <p class="text-xs text-slate-500 mt-1">PNG, JPG up to 10MB</p>
 </div>
 </div>
@@ -117,8 +123,8 @@
 <section class="bg-surface-dark rounded-xl p-8 border border-border-dark shadow-sm">
 <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
 <span class="material-symbols-outlined text-primary">payments</span>
-                                Payment Method
-                            </h3>
+<span data-i18n="payment">Payment Method</span>
+</h3>
 <!-- Credit Card Preview -->
 <div class="mb-8 flex justify-center">
 <div class="w-full max-w-sm aspect-[1.58/1] bg-gradient-to-br from-primary/80 to-primary rounded-xl p-6 shadow-xl relative overflow-hidden">
@@ -157,16 +163,16 @@
 </div>
 <div class="space-y-4">
 <div class="space-y-2">
-<label class="text-sm font-medium text-slate-400">Card Number</label>
+<label data-i18n="card_number" class="text-sm font-medium text-slate-400">Card Number</label>
 <input class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="0000 0000 0000 0000" type="text"/>
 </div>
 <div class="grid grid-cols-2 gap-4">
 <div class="space-y-2">
-<label class="text-sm font-medium text-slate-400">Expiry Date</label>
+<label data-i18n="expiry_date" class="text-sm font-medium text-slate-400">Expiry Date</label>
 <input class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="MM/YY" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="text-sm font-medium text-slate-400">CVC</label>
+<label data-i18n="cvc" class="text-sm font-medium text-slate-400">CVC</label>
 <input class="w-full bg-background-dark border border-border-dark rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-slate-100" placeholder="***" type="text"/>
 </div>
 </div>
@@ -203,11 +209,11 @@
                             <span class="text-slate-100">504 ج.م</span>
                         </div>
                         <div class="pt-3 border-t border-border-dark flex justify-between items-baseline flex-row-reverse">
-                            <span class="text-lg font-bold text-slate-100">الإجمالي</span>
+                            <span data-i18n="total_price" class="text-lg font-bold text-slate-100">الإجمالي</span>
                             <span class="text-2xl font-bold text-primary">5004 ج.م</span>
                         </div>
                     </div>
-<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-extrabold py-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-xl shadow-primary/10 flex items-center justify-center gap-2 mb-4">
+<button data-i18n="confirm_booking" class="w-full bg-primary hover:bg-primary/90 text-background-dark font-extrabold py-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-xl shadow-primary/10 flex items-center justify-center gap-2 mb-4">
                                     تأكيد الحجز والدفع 5004 ج.م
                                     </button>
 <!-- Security Badges -->
@@ -245,7 +251,7 @@
                 <a href="index.html" class="flex items-center gap-2 mb-8 justify-end">
                     <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
                 </a>
-                <p class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
+                <p data-i18n="footer_desc" class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
                     اوتو لاين، 2 مسجد الرحمن الرحيم، هاكستيب، النزهة، محافظة القاهرة 4473212
                 </p>
                 <div class="flex gap-4 mt-8 justify-end">
@@ -258,24 +264,24 @@
                 </div>
             </div>
             <div>
-                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">استكشف</h5>
+                <h5 data-i18n="footer_explore" class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">استكشف</h5>
                 <ul class="space-y-4 text-slate-500 text-sm">
-                    <li><a class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
+                    <li><a data-i18n="nav_home" class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
+                    <li><a data-i18n="nav_about" class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
+                    <li><a data-i18n="nav_fleet" class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
+                    <li><a data-i18n="nav_blog" class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">الدعم</h5>
+                <h5 data-i18n="footer_support" class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">الدعم</h5>
                 <ul class="space-y-4 text-slate-500 text-sm">
-                    <li><a class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
+                    <li><a data-i18n="nav_contact" class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
+                    <li><a data-i18n="footer_terms" class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
+                    <li><a data-i18n="footer_privacy" class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">اتصل بنا</h5>
+                <h5 data-i18n="footer_contact" class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">اتصل بنا</h5>
                 <ul class="space-y-4 text-slate-500 text-sm">
                     <li class="flex items-center gap-3 justify-end text-sm">
                         <span class="text-slate-300 font-bold">+201003412321</span>
@@ -293,7 +299,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto border-t border-white/5 pt-10 text-center space-y-4">
-            <p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
+            <p data-i18n="footer_rights" class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
             <a href="https://yaaalla.com/" target="_blank" class="text-slate-500 text-[10px] uppercase tracking-[0.2em] hover:text-primary transition-colors block">
                 Designed by <span class="text-primary font-black">Yaaalla</span>
             </a>

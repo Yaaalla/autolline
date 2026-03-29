@@ -15,6 +15,7 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="mobile_app.css">
+    <script src="i18n.js"></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -54,20 +55,25 @@
             <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
         </a>
         <nav class="hidden md:flex items-center gap-10">
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest text-primary"
+            <a data-i18n="nav_home" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest text-primary"
                 href="index.html">الرئيسية</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+            <a data-i18n="nav_about" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
                 href="about.html">من نحن</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+            <a data-i18n="nav_fleet" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
                 href="fleet.html">سيارات للايجار</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+            <a data-i18n="nav_blog" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
                 href="blog.html">المدونة</a>
-            <a class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
+            <a data-i18n="nav_contact" class="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest"
                 href="contact.html">تواصل معنا</a>
         </nav>
-        <button onclick="window.location.href='fleet.html'"
-            class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">أجر
-            سيارتك</button>
+        <div class="flex items-center gap-4">
+            <button onclick="window.i18n.toggleLanguage()" class="lang-toggle-btn text-xs font-bold border border-white/20 px-3 py-1 rounded hover:bg-white/10 transition-all">
+                EN
+            </button>
+            <button onclick="window.location.href='fleet.html'" data-i18n="nav_cta"
+                class="bg-primary text-background-dark px-8 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white transition-all shadow-lg">أجر
+                سيارتك</button>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -84,22 +90,21 @@
         </div>
         <div class="relative z-20 text-center px-4 max-w-5xl">
             <div class="glass inline-block px-6 py-2 rounded-full mb-8">
-                <span class="text-primary font-serif text-xl tracking-wide">اوتو لاين لتاجير السيارات</span>
+                <span data-i18n="hero_badge" class="text-primary font-serif text-xl tracking-wide">اوتو لاين لتاجير السيارات</span>
             </div>
             <h1 class="font-serif text-6xl md:text-8xl lg:text-[80px] leading-tight text-white mb-8 italic">
-                اوتو لاين <br /> <span class="italic text-primary">أجر سيارتك</span>
+                <span data-i18n="hero_title_1">اوتو لاين</span> <br /> <span data-i18n="hero_title_2" class="italic text-primary">أجر سيارتك</span>
             </h1>
-            <button onclick="window.location.href='fleet.html'"
+            <button onclick="window.location.href='fleet.html'" data-i18n="hero_cta"
                 class="bg-primary text-background-dark px-12 py-4 rounded-xl font-bold text-lg uppercase tracking-wider hover:bg-white transition-all shadow-2xl">تعرف
                 على خدمتنا</button>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="py-24 px-6 lg:px-20 bg-background-dark border-b border-white/5">
         <div class="max-w-7xl mx-auto">
             <div class="mb-16 text-right">
-                <h2 class="font-serif text-5xl text-white mb-4 italic">توفر اوتو لاين مجموعة واسعة من السيارات</h2>
+                <h2 data-i18n="services_title" class="font-serif text-5xl text-white mb-4 italic">توفر اوتو لاين مجموعة واسعة من السيارات</h2>
                 <div class="h-1 w-20 bg-primary mb-8 ml-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -107,43 +112,43 @@
                     class="p-8 border border-white/5 bg-surface rounded-2xl hover:border-primary/30 transition-all text-right group">
                     <span
                         class="text-primary material-symbols-outlined text-4xl mb-6 group-hover:scale-110 transition-transform block">eco</span>
-                    <h3 class="text-xl font-bold text-white mb-4">السيارات الاقتصادية</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">مثالية للتنقل اليومي وتوفير الوقود.</p>
+                    <h3 data-i18n="service_economy_title" class="text-xl font-bold text-white mb-4">السيارات الاقتصادية</h3>
+                    <p data-i18n="service_economy_desc" class="text-slate-400 text-sm leading-relaxed">مثالية للتنقل اليومي وتوفير الوقود.</p>
                 </div>
                 <div
                     class="p-8 border border-white/5 bg-surface rounded-2xl hover:border-primary/30 transition-all text-right group">
                     <span
                         class="text-primary material-symbols-outlined text-4xl mb-6 group-hover:scale-110 transition-transform block">family_restroom</span>
-                    <h3 class="text-xl font-bold text-white mb-4">السيارات العائلية</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">توفر مساحة واسعة وراحة للعائلة.</p>
+                    <h3 data-i18n="service_family_title" class="text-xl font-bold text-white mb-4">السيارات العائلية</h3>
+                    <p data-i18n="service_family_desc" class="text-slate-400 text-sm leading-relaxed">توفر مساحة واسعة وراحة للعائلة.</p>
                 </div>
                 <div
                     class="p-8 border border-white/5 bg-surface rounded-2xl hover:border-primary/30 transition-all text-right group">
                     <span
                         class="text-primary material-symbols-outlined text-4xl mb-6 group-hover:scale-110 transition-transform block">terrain</span>
-                    <h3 class="text-xl font-bold text-white mb-4">سيارات الدفع الرباعي</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">مناسبة للمغامرات والطرق الوعرة.</p>
+                    <h3 data-i18n="service_suv_title" class="text-xl font-bold text-white mb-4">سيارات الدفع الرباعي</h3>
+                    <p data-i18n="service_suv_desc" class="text-slate-400 text-sm leading-relaxed">مناسبة للمغامرات والطرق الوعرة.</p>
                 </div>
                 <div
                     class="p-8 border border-white/5 bg-surface rounded-2xl hover:border-primary/30 transition-all text-right group">
                     <span
                         class="text-primary material-symbols-outlined text-4xl mb-6 group-hover:scale-110 transition-transform block">diamond</span>
-                    <h3 class="text-xl font-bold text-white mb-4">السيارات الفاخرة</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">لمن يبحثون عن تجربة قيادة فاخرة وأنيقة.</p>
+                    <h3 data-i18n="service_luxury_title" class="text-xl font-bold text-white mb-4">السيارات الفاخرة</h3>
+                    <p data-i18n="service_luxury_desc" class="text-slate-400 text-sm leading-relaxed">لمن يبحثون عن تجربة قيادة فاخرة وأنيقة.</p>
                 </div>
                 <div
                     class="p-8 border border-white/5 bg-surface rounded-2xl hover:border-primary/30 transition-all text-right group">
                     <span
                         class="text-primary material-symbols-outlined text-4xl mb-6 group-hover:scale-110 transition-transform block">sports_motorsports</span>
-                    <h3 class="text-xl font-bold text-white mb-4">السيارات الرياضية</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">لعشاق السرعة والأداء العالي.</p>
+                    <h3 data-i18n="service_sports_title" class="text-xl font-bold text-white mb-4">السيارات الرياضية</h3>
+                    <p data-i18n="service_sports_desc" class="text-slate-400 text-sm leading-relaxed">لعشاق السرعة والأداء العالي.</p>
                 </div>
                 <div
                     class="p-8 border border-white/5 bg-surface rounded-2xl hover:border-primary/30 transition-all text-right group">
                     <span
                         class="text-primary material-symbols-outlined text-4xl mb-6 group-hover:scale-110 transition-transform block">celebration</span>
-                    <h3 class="text-xl font-bold text-white mb-4">تأجير سيارات للمناسبات الخاصة</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">أجير السيارات لحفلات الزفاف أو الاحتفالات الخاصة.
+                    <h3 data-i18n="service_events_title" class="text-xl font-bold text-white mb-4">تأجير سيارات للمناسبات الخاصة</h3>
+                    <p data-i18n="service_events_desc" class="text-slate-400 text-sm leading-relaxed">أجير السيارات لحفلات الزفاف أو الاحتفالات الخاصة.
                     </p>
                 </div>
             </div>
@@ -159,26 +164,26 @@
                         class="w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700" />
                 </div>
                 <div class="absolute -bottom-10 -right-10 glass p-8 rounded-2xl hidden md:block">
-                    <p class="text-primary font-serif italic text-4xl font-black">12+</p>
-                    <p class="text-slate-400 text-xs uppercase tracking-widest mt-1 text-right">سنة من الخبرة</p>
+                    <p data-i18n="about_experience_num" class="text-primary font-serif italic text-4xl font-black">12+</p>
+                    <p data-i18n="about_experience_text" class="text-slate-400 text-xs uppercase tracking-widest mt-1 text-right">سنة من الخبرة</p>
                 </div>
             </div>
             <div class="order-1 lg:order-2 text-right">
-                <span class="text-primary font-serif uppercase tracking-[0.3em] text-sm mb-4 block italic">من نحن</span>
-                <h2 class="font-serif text-5xl text-white mb-8 italic">ماذا تعرف عن اوتو لاين</h2>
+                <span data-i18n="about_badge" class="text-primary font-serif uppercase tracking-[0.3em] text-sm mb-4 block italic">من نحن</span>
+                <h2 data-i18n="about_title" class="font-serif text-5xl text-white mb-8 italic">ماذا تعرف عن اوتو لاين</h2>
                 <div class="space-y-6 text-slate-400 text-lg font-light leading-relaxed">
-                    <p>
+                    <p data-i18n="about_p1">
                         مرحبًا بكم في اوتو لاين شركة اوتو لاين هي واحدة من الشركات الرائدة في مجال تأجير السيارات، حيث
                         نهدف إلى تقديم تجربة استثنائية لعملائنا من الأفراد والشركات. نحن نؤمن بتقديم حلول مبتكرة تلبي
                         احتياجات عملائنا وتفوق توقعاتهم.
                     </p>
-                    <p>
+                    <p data-i18n="about_p2">
                         تُعتبر اوتو لاين شركة رائدة في مجال تأجير السيارات، تقدم خدماتها لتلبية احتياجات العملاء
                         المتنوعة من خلال أسطول واسع من السيارات الحديثة والمجهزة بأحدث التقنيات. نحن ملتزمون بتوفير
                         تجربة استئجار مريحة وسهلة من خلال نظام حجز إلكتروني بسيط وسريع، وفريق دعم متاح على مدار الساعة
                         لضمان رضا العملاء.
                     </p>
-                    <p>
+                    <p data-i18n="about_p3">
                         بفضل أسعارنا التنافسية وخدماتنا الإضافية المميزة، نسعى لتوفير أفضل قيمة لعملائنا وجعل كل رحلة
                         تجربة مميزة ومريحة.
                     </p>
@@ -187,10 +192,9 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="py-24 px-6 lg:px-20 bg-background-dark">
         <div class="max-w-7xl mx-auto text-right">
-            <h2 class="font-serif text-5xl text-white mb-16 italic">مميزات اوتو لاين</h2>
+            <h2 data-i18n="features_title" class="font-serif text-5xl text-white mb-16 italic">مميزات اوتو لاين</h2>
             <div class="grid md:grid-cols-3 gap-12">
                 <div class="text-right">
                     <div
@@ -198,10 +202,10 @@
                         <span
                             class="text-primary material-symbols-outlined text-4xl group-hover:text-background-dark">spa</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">راحة استثنائية</h3>
-                    <p class="text-slate-500 leading-relaxed font-light">
+                    <h3 data-i18n="feature_comfort_title" class="text-2xl font-bold text-white mb-4">راحة استثنائية</h3>
+                    <p data-i18n="feature_comfort_desc" class="text-slate-500 leading-relaxed font-light">
                         في اوتو لاين، نضع راحة عملائنا في مقدمة أولوياتنا. نوفر سيارات حديثة ومجهزة بأحدث التقنيات لضمن
-                        تجربة قيادة مريحة وآمنة. نقدم خيارات تأجير مرنة وخدمات إضافية مثل التوصيل والاستلام.
+                        تجربة قيادة مريحة وآمنة. نقدم خيارات تأجير مرنة وخدمات إاضافية مثل التوصيل والاستلام.
                     </p>
                 </div>
                 <div class="text-right">
@@ -210,8 +214,8 @@
                         <span
                             class="text-primary material-symbols-outlined text-4xl group-hover:text-background-dark">timer</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">وقت أقل</h3>
-                    <p class="text-slate-500 leading-relaxed font-light">
+                    <h3 data-i18n="feature_time_title" class="text-2xl font-bold text-white mb-4">وقت أقل</h3>
+                    <p data-i18n="feature_time_desc" class="text-slate-500 leading-relaxed font-light">
                         في اوتو لاين نسعى لتوفير تجربة سريعة وسهلة لعملائنا. مع نظام الحجز الإلكتروني البسيط، يمكنك
                         العثور على السيارة المناسبة لك في وقت قياسي. نوفر عليك الوقت والجهد في البحث.
                     </p>
@@ -222,8 +226,8 @@
                         <span
                             class="text-primary material-symbols-outlined text-4xl group-hover:text-background-dark">payments</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">تكلفة تنافسية</h3>
-                    <p class="text-slate-500 leading-relaxed font-light">
+                    <h3 data-i18n="feature_cost_title" class="text-2xl font-bold text-white mb-4">تكلفة تنافسية</h3>
+                    <p data-i18n="feature_cost_desc" class="text-slate-500 leading-relaxed font-light">
                         تقدم اوتو لاين أسعاراً تنافسية تناسب جميع الميزانيات مع الحفاظ على جودة الخدمة. نوفر عروض
                         وخصومات خاصة على فترات الإيجار الطويلة، بالإضافة إلى خدمات إضافية للتأمين الشامل.
                     </p>
@@ -232,12 +236,11 @@
         </div>
     </section>
 
-    <!-- Rental CTA Section -->
     <section class="py-24 px-6 lg:px-20 bg-surface">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div class="text-right">
-                <h2 class="font-serif text-5xl text-white mb-8 italic">استأجر سيارة</h2>
-                <p class="text-slate-400 text-lg font-light leading-relaxed mb-10">
+                <h2 data-i18n="rental_cta_title" class="font-serif text-5xl text-white mb-8 italic">استأجر سيارة</h2>
+                <p data-i18n="rental_cta_desc" class="text-slate-400 text-lg font-light leading-relaxed mb-10">
                     مع اوتو لاين، يمكنك استئجار السيارة المثالية بسهولة وسرعة. نقدم أسطولاً متنوعاً من السيارات الحديثة
                     والمجهزة بأحدث التقنيات لتلبية احتياجاتك بفضل نظام الحجز الإلكتروني البسيط والدعم المتاح على مدار
                     الساعة نضمن لك تجربة استئجار سلسة ومريحة مع أسعار تنافسية وخدمات إضافية لتعزيز راحتك.
@@ -245,7 +248,7 @@
                 <div class="flex items-center gap-6 justify-end">
                     <div class="text-right">
                         <p class="text-white font-bold text-lg">+201003412321</p>
-                        <p class="text-slate-500 text-xs uppercase tracking-widest mt-1">تواصل معنا</p>
+                        <p data-i18n="rental_cta_contact" class="text-slate-500 text-xs uppercase tracking-widest mt-1">تواصل معنا</p>
                     </div>
                     <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                         <span class="material-symbols-outlined text-background-dark">call</span>
@@ -261,16 +264,15 @@
         </div>
     </section>
 
-    <!-- Featured Cars Showcase -->
     <section class="py-24 px-6 lg:px-20 bg-background-dark">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 text-right">
                 <div>
-                    <h2 class="font-serif text-5xl text-white mb-4 italic">سيارات للايجار</h2>
-                    <p class="text-slate-400 uppercase tracking-widest text-xs font-medium text-right">اختار اللي يناسبك
+                    <h2 data-i18n="fleet_title" class="font-serif text-5xl text-white mb-4 italic">سيارات للايجار</h2>
+                    <p data-i18n="fleet_subtitle" class="text-slate-400 uppercase tracking-widest text-xs font-medium text-right">اختار اللي يناسبك
                         من سيارتنا افضل سيارات للايجار</p>
                 </div>
-                <a href="fleet.html" class="text-primary font-bold text-sm hover:underline">مشاهدة الكل</a>
+                <a href="fleet.html" data-i18n="fleet_view_all" class="text-primary font-bold text-sm hover:underline">مشاهدة الكل</a>
             </div>
 
             <div id="cars-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-right">
@@ -281,11 +283,10 @@
         </div>
     </section>
 
-    <!-- Latest Blogs Section -->
     <section class="py-24 px-6 lg:px-20 bg-background-dark border-t border-white/5">
         <div class="max-w-7xl mx-auto">
             <div class="mb-16 text-right">
-                <h2 class="font-serif text-5xl text-white mb-4 italic">مقالات النخبة</h2>
+                <h2 data-i18n="blog_title" class="font-serif text-5xl text-white mb-4 italic">مقالات النخبة</h2>
                 <div class="h-1 w-20 bg-primary mb-8 ml-auto"></div>
             </div>
             <div id="blog-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 text-right">
@@ -303,7 +304,7 @@
                 <a href="index.html" class="flex items-center gap-2 mb-8 justify-end">
                     <img src="logo-b.webp" alt="AutoLine Logo" class="h-12 w-auto object-contain" />
                 </a>
-                <p class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
+                <p data-i18n="footer_desc" class="text-slate-500 text-sm leading-relaxed max-w-[250px] mr-auto md:mr-0">
                     اوتو لاين، 2 مسجد الرحمن الرحيم، هاكستيب، النزهة، محافظة القاهرة 4473212
                 </p>
                 <div class="flex gap-4 mt-8 justify-end">
@@ -318,26 +319,26 @@
                 </div>
             </div>
             <div>
-                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
+                <h5 data-i18n="footer_explore" class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
                     استكشف</h5>
                 <ul class="space-y-4 text-slate-500 text-sm">
-                    <li><a class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
+                    <li><a data-i18n="nav_home" class="hover:text-primary transition-colors block" href="index.html">الرئيسية</a></li>
+                    <li><a data-i18n="nav_about" class="hover:text-primary transition-colors block" href="about.html">من نحن</a></li>
+                    <li><a data-i18n="nav_fleet" class="hover:text-primary transition-colors block" href="fleet.html">سيارات للايجار</a></li>
+                    <li><a data-i18n="nav_blog" class="hover:text-primary transition-colors block" href="blog.html">المدونة</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
+                <h5 data-i18n="footer_support" class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
                     الدعم</h5>
                 <ul class="space-y-4 text-slate-500 text-sm">
-                    <li><a class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
-                    <li><a class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
+                    <li><a data-i18n="nav_contact" class="hover:text-primary transition-colors block" href="contact.html">تواصل معنا</a></li>
+                    <li><a data-i18n="footer_terms" class="hover:text-primary transition-colors block" href="#">شروط الاستخدام</a></li>
+                    <li><a data-i18n="footer_privacy" class="hover:text-primary transition-colors block" href="#">سياسة الخصوصية</a></li>
                 </ul>
             </div>
             <div>
-                <h5 class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
+                <h5 data-i18n="footer_contact" class="text-white font-bold uppercase tracking-widest text-xs mb-8 border-r-4 border-primary pr-3">
                     اتصل بنا</h5>
                 <ul class="space-y-4 text-slate-500 text-sm">
                     <li class="flex items-center gap-3 justify-end text-sm">
@@ -356,7 +357,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto border-t border-white/5 pt-10 text-center space-y-4">
-            <p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
+            <p data-i18n="footer_rights" class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2026 اوتو لاين. جميع الحقوق محفوظة.</p>
             <a href="https://yaaalla.com/" target="_blank"
                 class="text-slate-500 text-[10px] uppercase tracking-[0.2em] hover:text-primary transition-colors block">
                 Designed by <span class="text-primary font-black">Yaaalla</span>
@@ -402,26 +403,34 @@
                         <div class="h-64 relative overflow-hidden bg-white/5">
                             <img src="${primaryImage || 'https://images.unsplash.com/photo-1542362567-b055002b91f4'}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy"/>
                             <div class="absolute top-6 left-6 bg-background-dark/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-primary font-sans text-sm font-bold">
-                                ${formatPrice(car.price_per_day)} / يوم
+                                ${formatPrice(car.price_per_day)} ${window.i18n.t('details_per_day')}
                             </div>
                         </div>
                         <div class="p-8">
                             <h3 class="font-serif text-2xl text-white mb-4 italic">${car.name}</h3>
                             <div class="flex items-center gap-6 mb-8">
                                 <span class="flex items-center gap-2 text-[10px] text-slate-500 uppercase tracking-widest">
-                                    <span class="material-symbols-outlined text-sm text-primary">airline_seat_recline_extra</span> ${car.seats} مقاعد
+                                    <span class="material-symbols-outlined text-sm text-primary">airline_seat_recline_extra</span> ${car.seats} ${window.i18n.t('details_seats')}
                                 </span>
                                 <span class="flex items-center gap-2 text-[10px] text-slate-500 uppercase tracking-widest">
-                                    <span class="material-symbols-outlined text-sm text-primary">settings</span> ${car.transmission === 'Automatic' ? 'أوتو' : 'يدوي'}
+                                    <span class="material-symbols-outlined text-sm text-primary">settings</span> ${car.transmission === 'Automatic' ? window.i18n.t('details_auto') : window.i18n.t('details_manual')}
                                 </span>
                             </div>
                             <button onclick="window.location.href='car-details.html?id=${car.id}'" class="w-full border border-primary/30 text-primary py-4 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-background-dark transition-all">
-                                التفاصيل
+                                ${window.i18n.t('details_btn')}
                             </button>
                         </div>
                     </div>
                 `;
             }).join('');
+
+            // Re-apply alignment if needed for dynamic content
+            if (window.i18n.currentLang === 'en') {
+                grid.querySelectorAll('.text-right').forEach(el => {
+                    el.classList.remove('text-right');
+                    el.classList.add('text-left');
+                });
+            }
         }
 
         async function fetchLatestBlogs() {
@@ -446,30 +455,44 @@
         function renderBlogs(data, grid) {
             grid.innerHTML = data.map(post => {
                 const optimizedImg = getOptimizedUrl(post.image_url, { width: 600, quality: 70 });
+                const dateLocale = window.i18n.currentLang === 'ar' ? 'ar-EG' : 'en-US';
                 return `
                     <div class="group bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all flex flex-col translate-y-0 hover:-translate-y-2">
                         <div class="aspect-video overflow-hidden">
                             <img src="${optimizedImg || 'https://images.unsplash.com/photo-1542362567-b055002b91f4'}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy"/>
                         </div>
                         <div class="p-8 flex-1 flex flex-col">
-                            <span class="text-primary font-bold uppercase tracking-[0.2em] text-[10px] mb-4 block border-r border-primary/30 pr-2">${new Date(post.created_at).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+                            <span class="text-primary font-bold uppercase tracking-[0.2em] text-[10px] mb-4 block border-r border-primary/30 pr-2">${new Date(post.created_at).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                             <h3 class="text-white font-serif text-2xl italic mb-6 leading-tight line-clamp-2 min-h-[4rem]">${post.title}</h3>
                             <p class="text-slate-400 text-sm font-light leading-relaxed mb-8 flex-1 line-clamp-3">
                                 ${stripHtml(post.content).substring(0, 150)}...
                             </p>
                             <a href="blog-details.html?id=${post.id}" class="inline-flex items-center gap-2 text-primary text-[10px] font-black uppercase tracking-widest hover:text-white transition-colors group">
-                                اقرأ المزيد
-                                <span class="material-symbols-outlined text-sm transform transition-transform group-hover:translate-x-1">arrow_forward</span>
-                                <span class="material-symbols-outlined text-sm transform transition-transform group-hover:-translate-x-1 hidden">arrow_back</span>
+                                ${window.i18n.t('blog_read_more')}
+                                <span class="material-symbols-outlined text-sm transform transition-transform group-hover:translate-x-1 ${window.i18n.currentLang === 'ar' ? 'hidden' : ''}">arrow_forward</span>
+                                <span class="material-symbols-outlined text-sm transform transition-transform group-hover:-translate-x-1 ${window.i18n.currentLang === 'en' ? 'hidden' : ''}">arrow_back</span>
                             </a>
                         </div>
                     </div>
                 `;
             }).join('');
+
+             if (window.i18n.currentLang === 'en') {
+                grid.querySelectorAll('.text-right').forEach(el => {
+                    el.classList.remove('text-right');
+                    el.classList.add('text-left');
+                });
+            }
         }
 
         fetchFeaturedCars();
         fetchLatestBlogs();
+
+        // Listen for language changes to re-render dynamic content
+        window.addEventListener('languageChanged', () => {
+            fetchFeaturedCars();
+            fetchLatestBlogs();
+        });
     </script>
     <script src="mobile_app.js"></script>
 </body>

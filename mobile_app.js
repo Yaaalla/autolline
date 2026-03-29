@@ -58,34 +58,44 @@ function applyMobileClasses() {
 }
 
 function injectMobileNav() {
-    if (document.querySelector('.mobile-nav')) return;
+    // Remove existing if any (for language change)
+    const existingNav = document.querySelector('.mobile-nav');
+    if (existingNav) existingNav.remove();
 
     const nav = document.createElement('nav');
     nav.className = 'mobile-nav';
     nav.innerHTML = `
         <a href="index.html" class="mobile-nav-item" data-page="index">
             <span class="material-symbols-outlined">home</span>
-            <span>الرئيسية</span>
+            <span>${window.i18n.t('mob_nav_home')}</span>
         </a>
         <a href="fleet.html" class="mobile-nav-item" data-page="fleet">
             <span class="material-symbols-outlined">directions_car</span>
-            <span>الأسطول</span>
+            <span>${window.i18n.t('mob_nav_fleet')}</span>
         </a>
         <a href="blog.html" class="mobile-nav-item" data-page="blog">
             <span class="material-symbols-outlined">article</span>
-            <span>المدونة</span>
+            <span>${window.i18n.t('mob_nav_blog')}</span>
         </a>
         <a href="contact.html" class="mobile-nav-item" data-page="contact">
             <span class="material-symbols-outlined">call</span>
-            <span>تواصل</span>
+            <span>${window.i18n.t('mob_nav_contact')}</span>
         </a>
         <a href="admin-login.html" class="mobile-nav-item" data-page="admin">
             <span class="material-symbols-outlined">grid_view</span>
-            <span>المزيد</span>
+            <span>${window.i18n.t('mob_nav_more')}</span>
         </a>
     `;
     document.body.appendChild(nav);
+    handleActiveState(); // Re-apply active state
 }
+
+// Listen for language changes to update mobile nav
+window.addEventListener('languageChanged', () => {
+    if (window.innerWidth < 768) {
+        injectMobileNav();
+    }
+});
 
 function injectTransitionOverlay() {
     if (document.querySelector('.page-transition-overlay')) return;
